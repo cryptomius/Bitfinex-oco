@@ -1,0 +1,20 @@
+{
+  "name": "bitfinex-oco",
+  "version": "1.4.0",
+  "main": "121ScaleOut.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cryptomius/Bitfinex-oco.git"
+  },
+  "author": "Shannon Murdoch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cryptomius/Bitfinex-oco/issues"
+  },
+  "homepage": "https://github.com/cryptomius/Bitfinex-oco#readme",
+  "dependencies": {
+    "bitfinex-api-node": "2.0.0-beta.1",
+    "dotenv": "^4.0.0",
+    "yargs": "^11.0.0"
+  }
+}
