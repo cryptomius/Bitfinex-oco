@@ -108,11 +108,12 @@ ws.once('auth', () => {
 
 				o2.submit().then(() => {
 					
-						console.log('Submitted stop & target (oco) order')
-
-						ws.close()
-						process.exit()
-					
+					console.log('Submitted 100% stop and target order.')
+					console.log('------------------------------------------')
+					console.log('Good luck! Making gains? Drop me a tip: https://tinyurl.com/bfxoco')
+					console.log('------------------------------------------')
+					ws.close()
+					process.exit()
 
 				}).catch((err) => {
 					console.error(err)
@@ -144,7 +145,7 @@ if (margin == false && entryDirection == 'short') {
 function parseArguments() {
 	return require('yargs')
 	.usage('Usage: node $0')
-	.example('node $0 -p BTCUSD -a 0.004 -e 10000 -s 9000', 'Place a long market stop entry order for 0.004 BTC @ 10000 USD with stop at 9000 USD and default 1:1 50% scale-out target.')
+	.example('node $0 -p BTCUSD -a 0.004 -e 10000 -s 9000 -T 11000', 'Place a long market stop entry order for 0.004 BTC @ 10000 USD with stop at 9000 USD and close position at 11000.')
 	// '-p <tradingPair>'
 	.demand('pair')
 	.alias('p', 'pair')
@@ -166,7 +167,7 @@ function parseArguments() {
 	.describe('s', 'Set stop price')
 	// '-t <targetMultiplier>'
 	.alias('t', 'target')
-	.describe('t', 'Set target multiplier eg. 1.4 for 1:1.4 scale-out of 50%. Default 1:1.')
+	.describe('t', 'Set target multiplier eg. 1.4 for 1:1.4 position closure. Default 1:1. Ignored if -T price is set.')
 	.default('t', 1)
 	// '-S' for 'short' (entry sell) entry direction. Default direction is 'long' (entry buy)
 	.boolean('S')
@@ -189,7 +190,7 @@ function parseArguments() {
 	.describe('h', 'Hide your target and stop orders from the orderbook')
 	.default('h', false)
 	.alias('T', 'targetoverride')
-	.describe('T', 'Specify specific target for full sell-off.')
+	.describe('T', 'Set target to close position.')
 	.default('T', 0)
 	.wrap(process.stdout.columns)
 	.argv;
